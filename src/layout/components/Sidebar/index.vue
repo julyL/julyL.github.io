@@ -1,8 +1,8 @@
 <template>
   <div :class="{ 'has-logo': showLogo }">
-    <logo v-if="showLogo" :collapse="isCollapse" />
+    <logo :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <div class="sidebar__navList">
+      <!-- <div class="sidebar__navList">
         <div
           class="sidebar__navItem"
           v-for="(route, index) in permission_routes"
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </el-scrollbar>
   </div>
 </template>

@@ -1,6 +1,5 @@
 <template>
   <div class="navbar">
-    <div class="navbar__logo">LOGO</div>
     <div class="navbar__content">
       <slot></slot>
     </div>
@@ -58,7 +57,7 @@ export default {
   }
   .navbar__content {
     float: left;
-    width: calc(100% - 493px);
+    width: calc(100% - 210px);
   }
   .hamburger-container {
     line-height: 46px;
