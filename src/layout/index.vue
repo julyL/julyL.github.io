@@ -5,7 +5,7 @@
       class="drawer-bg"
       @click="handleClickOutside"
     /> -->
-    <!-- <sidebar class="sidebar-container" /> -->
+    <sidebar class="sidebar-container" />
     <div :class="{ hasTagsView: needTagsView }" class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <navbar>

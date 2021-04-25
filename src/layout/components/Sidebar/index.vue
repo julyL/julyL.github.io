@@ -1,61 +1,58 @@
 <template>
   <div :class="{ 'has-logo': showLogo }">
-    <logo :collapse="isCollapse" />
-    <el-scrollbar wrap-class="scrollbar-wrapper">
-      <!-- <div class="sidebar__navList">
+    <div class="sidebar__navList">
+      <div
+        class="sidebar__navItem"
+        v-for="(route, index) in permission_routes"
+        :key="route.path"
+      >
         <div
-          class="sidebar__navItem"
-          v-for="(route, index) in permission_routes"
-          :key="route.path"
+          class="sidebar__item"
+          v-if="!route.hidden"
+          :style="{ height: route.children.length * 40 + 'px' }"
+          :class="!hideMenuList[index] ? '' : 'sidebar__switchMenu--hide'"
         >
           <div
-            class="sidebar__item"
-            v-if="!route.hidden"
-            :style="{ height: route.children.length * 40 + 'px' }"
-            :class="!hideMenuList[index] ? '' : 'sidebar__switchMenu--hide'"
+            class="sidebar__navlink"
+            v-for="(child, ind) in route.children"
+            :key="child.meta.title"
           >
-            <div
-              class="sidebar__navlink"
-              v-for="(child, ind) in route.children"
-              :key="child.meta.title"
+            <router-link
+              class="sidebar__nav"
+              tag="div"
+              :to="resolvePath(child.path, route.path)"
+              v-if="route.children.length == 1"
             >
+              {{ route.meta.title }}
+            </router-link>
+            <template v-else>
+              <div
+                class="sidebar__nav"
+                @click="switchExpand(index)"
+                v-if="ind == 0"
+              >
+                {{ route.meta.title }}
+                <img
+                  class="sidebar__switchMenu"
+                  :src="
+                    !hideMenuList[index]
+                      ? require('@/assets/images/arrow_down@2x.png')
+                      : require('@/assets/images/arrow_up@2x.png')
+                  "
+                />
+              </div>
               <router-link
                 class="sidebar__nav"
                 tag="div"
                 :to="resolvePath(child.path, route.path)"
-                v-if="route.children.length == 1"
               >
-                {{ route.meta.title }}
+                {{ child.meta.title }}
               </router-link>
-              <template v-else>
-                <div
-                  class="sidebar__nav"
-                  @click="switchExpand(index)"
-                  v-if="ind == 0"
-                >
-                  {{ route.meta.title }}
-                  <img
-                    class="sidebar__switchMenu"
-                    :src="
-                      !hideMenuList[index]
-                        ? require('@/assets/images/arrow_down@2x.png')
-                        : require('@/assets/images/arrow_up@2x.png')
-                    "
-                  />
-                </div>
-                <router-link
-                  class="sidebar__nav"
-                  tag="div"
-                  :to="resolvePath(child.path, route.path)"
-                >
-                  {{ child.meta.title }}
-                </router-link>
-              </template>
-            </div>
+            </template>
           </div>
         </div>
-      </div> -->
-    </el-scrollbar>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -106,6 +103,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .sidebar__navList {
+  padding-top: 98px;
   .sidebar__item {
     width: 232px;
     margin: 0 auto;

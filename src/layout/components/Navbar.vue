@@ -1,5 +1,12 @@
 <template>
   <div class="navbar">
+    <div class="navbar__logowapper">
+      <img
+        class="navbar__logo"
+        alt="柏翎舞蹈"
+        src="../../assets/images/logo-img@2x.png"
+      />
+    </div>
     <div class="navbar__content">
       <slot></slot>
     </div>
@@ -42,14 +49,23 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  height: 50px;
+  height: 74px;
   overflow: hidden;
   position: relative;
+  z-index: 10;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  margin-left: -284px;
+  .navbar__logowapper {
+    float: left;
+    width: 284px;
+    padding: 16px 0 0 55px;
+  }
   .navbar__logo {
     float: left;
-    width: 283px;
+    width: 146px;
+    height: 45px;
+    display: block;
   }
   .navbar__info {
     float: left;
@@ -57,7 +73,14 @@ export default {
   }
   .navbar__content {
     float: left;
-    width: calc(100% - 210px);
+    padding-top: 15px;
+    width: calc(100% - 494px);
+    // hack
+    ::v-deep {
+      .el-scrollbar__view {
+        height: 58px;
+      }
+    }
   }
   .hamburger-container {
     line-height: 46px;

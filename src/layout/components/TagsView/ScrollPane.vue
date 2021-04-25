@@ -88,20 +88,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$navbarHeight: 58px;
 .scroll-container {
   white-space: nowrap;
   position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   width: 100%;
-  height: 100%;
   ::v-deep {
     .el-scrollbar__bar {
       bottom: 0px;
     }
     .el-scrollbar__wrap {
-      height: $navbarHeight;
+      // height: 49px;
     }
   }
 }

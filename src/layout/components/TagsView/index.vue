@@ -14,7 +14,6 @@
         tag="span"
         class="tags-view-item"
         @click.middle.native="!isAffix(tag) ? closeSelectedTag(tag) : ''"
-        @contextmenu.prevent.native="openMenu(tag, $event)"
       >
         {{ tag.title }}
         <span
@@ -24,18 +23,6 @@
         />
       </router-link>
     </scroll-pane>
-    <ul
-      v-show="visible"
-      :style="{ left: left + 'px', top: top + 'px' }"
-      class="contextmenu"
-    >
-      <li @click="refreshSelectedTag(selectedTag)">Refresh</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">
-        Close
-      </li>
-      <li @click="closeOthersTags">Close Others</li>
-      <li @click="closeAllTags(selectedTag)">Close All</li>
-    </ul>
   </div>
 </template>
 
@@ -188,23 +175,6 @@ export default {
         }
       }
     },
-    openMenu(tag, e) {
-      const menuMinWidth = 105;
-      const offsetLeft = this.$el.getBoundingClientRect().left; // container margin left
-      const offsetWidth = this.$el.offsetWidth; // container width
-      const maxLeft = offsetWidth - menuMinWidth; // left boundary
-      const left = e.clientX - offsetLeft + 15; // 15: margin right
-
-      if (left > maxLeft) {
-        this.left = maxLeft;
-      } else {
-        this.left = left;
-      }
-
-      this.top = e.clientY;
-      this.visible = true;
-      this.selectedTag = tag;
-    },
     closeMenu() {
       this.visible = false;
     },
@@ -217,12 +187,15 @@ export default {
 
 <style lang="scss" scoped>
 $navbarHeight: 58px;
+$blue: #007aff;
+$grey: #525252;
+
 .tags-view-container {
   height: $navbarHeight;
   width: 100%;
   background: #fff;
-  border-bottom: 1px solid #d8dce5;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+  // border-bottom: 1px solid #d8dce5;
+  // box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
   .tags-view-wrapper {
     .tags-view-item {
       display: inline-block;
@@ -231,9 +204,9 @@ $navbarHeight: 58px;
       width: 170px;
       height: $navbarHeight;
       line-height: $navbarHeight;
-      color: #495060;
+      color: $grey;
       background: #fff;
-      font-size: 12px;
+      font-size: 16px;
       margin-left: 5px;
       text-align: center;
       &:first-of-type {
@@ -243,12 +216,12 @@ $navbarHeight: 58px;
         margin-right: 15px;
       }
       &.active {
-        background-color: #42b983;
-        color: #fff;
-        border-color: #42b983;
+        background: url('../../../assets/images/tab-bg@2x.png') 0 0 / 100% 100%;
+        color: $blue;
+        // border-color: #42b983;
         &::before {
           content: '';
-          background: #fff;
+          background: #ececec;
           display: inline-block;
           width: 8px;
           height: 8px;

@@ -4,8 +4,10 @@
 
 <script>
 export default {
-  // data() {}
+  props: {},
+  data() {},
+  methods() {}
 };
 </script>
 
-<style></style>
+<style lang="scss"></style>
