@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0cf320"],{"634a":function(n,e,t){"use strict";t.r(e);var c=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",[n._v("订单管理")])},u=[],l={},a=l,r=t("5d22"),s=Object(r["a"])(a,c,u,!1,null,null,null);e["default"]=s.exports}}]);
