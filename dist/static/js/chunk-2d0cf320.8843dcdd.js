@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0cf320"],{"634a":function(n,t,e){"use strict";e.r(t);var u=function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("div",[n._v("订单管理 界面和学生信息管理类似")])},c=[],a={data:function(){return{fuck:!0}}},r=a,l=e("5d22"),i=Object(l["a"])(r,u,c,!1,null,null,null);t["default"]=i.exports}}]);
