@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d207b92"],{a26a:function(n,e,t){"use strict";t.r(e);var u=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",[n._v("班级设置")])},a=[],c={},l=c,r=t("5d22"),s=Object(r["a"])(l,u,a,!1,null,null,null);e["default"]=s.exports}}]);
